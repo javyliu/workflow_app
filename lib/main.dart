@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               CircleAvatar(
                 radius: 50,
@@ -38,50 +39,43 @@ class MyApp extends StatelessWidget {
                   letterSpacing: 2.5,
                 ),
               ),
-              Container(
-                color: Colors.white,
+              SizedBox(height: 20,
+                width: 150,
+                child: Divider(color: Colors.teal.shade100,),
+              ),
+              Card(
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
+                child: ListTile(
+                    leading: Icon(
                       Icons.phone,
                       color: Colors.teal,
                     ),
-                    SizedBox(width: 10,),
-                    Text(
+                    title: Text(
                       '+186 0097 9634',
                       style: TextStyle(
                         color: Colors.teal.shade900,
                         fontFamily: 'Source Sans Pro',
                         fontSize: 20,
                       ),
-                    )
-                  ],
+                    )),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.teal,
+                  ),
+                  title: Text(
+                    'javy_liu@163.com',
+                    style: TextStyle(
+                      color: Colors.teal.shade900,
+                      fontFamily: 'Source Sans Pro',
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ),
-              Container(
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.email,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(width: 10,),
-                    Text(
-                      'javy_liu@163.com',
-                      style: TextStyle(
-                        color: Colors.teal.shade900,
-                        fontFamily: 'Source Sans Pro',
-                        fontSize: 20,
-                      ),
-                    )
-                  ],
-                ),
-              )
             ],
           ),
         ),
