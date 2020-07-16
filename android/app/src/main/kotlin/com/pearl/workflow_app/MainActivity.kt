@@ -1,4 +1,4 @@
-package com.example.workflow_app
+package com.pearl.workflow_app
 
 import io.flutter.embedding.android.FlutterActivity
 
