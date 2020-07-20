@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         home: Scaffold(
           backgroundColor: Colors.red,
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.red,
           ),
           body: DicePage(),
+//          body: myCard(),
         ));
   }
 
