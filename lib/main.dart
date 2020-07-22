@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,17 +9,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        home: Scaffold(
-          backgroundColor: Colors.red,
-          appBar: AppBar(
-            title: Text("Dicee"),
-            backgroundColor: Colors.red,
-          ),
-          body: DicePage(),
-        ));
+//    return diceApp();
+      return ballApp();
   }
+
+  //=====begin ball app======
+  MaterialApp ballApp(){
+    return MaterialApp(
+      title: "Ball App",
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.blue,
+        appBar: AppBar(
+          title: Text("Ask Me Anything"),
+          backgroundColor: Colors.blue[900],
+        ),
+        body: Container(),
+
+      ),
+
+    );
+  }
+
+
+
+
+
+  //=======end ball app=========
+//===========begin dice===================
+  MaterialApp diceApp() {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: Text("Dicee"),
+          backgroundColor: Colors.red,
+        ),
+        body: DicePage(),
+      ),
+    );
+  }
+  
+  
 
   SafeArea myCard() {
     return SafeArea(
@@ -112,12 +144,7 @@ class _DicePageState extends State<DicePage> {
         children: <Widget>[
           Expanded(
             child: FlatButton(
-              onPressed: () {
-                setState(() {
-                  leftDiceNum = 5;
-                  print("left button got pressed.=$leftDiceNum");
-                });
-              },
+              onPressed: onClicked,
               child: Image.asset(
                 "images/dice$leftDiceNum.png",
                 width: double.infinity,
@@ -129,9 +156,7 @@ class _DicePageState extends State<DicePage> {
           ),
           Expanded(
             child: FlatButton(
-              onPressed: () {
-                print("right button get pressed");
-              },
+              onPressed: onClicked,
               child: Image.asset(
                 "images/dice$rightDiceNum.png",
                 width: double.infinity,
@@ -145,4 +170,14 @@ class _DicePageState extends State<DicePage> {
       ),
     );
   }
+
+  void onClicked() {
+    setState(() {
+      leftDiceNum = Random().nextInt(6) + 1;
+      rightDiceNum = Random().nextInt(6) + 1;
+      print("left button got pressed.=$leftDiceNum");
+    });
+  }
 }
+
+//========end dice======
