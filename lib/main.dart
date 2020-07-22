@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 //    return diceApp();
-      return ballApp();
+    return ballApp();
   }
 
   //=====begin ball app======
-  MaterialApp ballApp(){
+  MaterialApp ballApp() {
     return MaterialApp(
       title: "Ball App",
       debugShowCheckedModeBanner: false,
@@ -24,19 +24,15 @@ class MyApp extends StatelessWidget {
           title: Text("Ask Me Anything"),
           backgroundColor: Colors.blue[900],
         ),
-        body: Container(),
-
+        body: BallPage(),
       ),
-
     );
   }
 
+  //=====end ball app======
 
+  //=====begin dice app======
 
-
-
-  //=======end ball app=========
-//===========begin dice===================
   MaterialApp diceApp() {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -46,13 +42,15 @@ class MyApp extends StatelessWidget {
           title: Text("Dicee"),
           backgroundColor: Colors.red,
         ),
-        body: DicePage(),
+//        body: DicePage(),
+        body: myCard(),
       ),
     );
   }
-  
-  
 
+//========end dice======
+
+  ///不通过继承StatefulWidget 或 StatelessWidget 来实现页面
   SafeArea myCard() {
     return SafeArea(
       child: Column(
@@ -127,6 +125,34 @@ class MyApp extends StatelessWidget {
   }
 }
 
+///ball 组件
+class BallPage extends StatefulWidget {
+  @override
+  _BallPageState createState() => _BallPageState();
+}
+
+class _BallPageState extends State<BallPage> {
+  int ballNumber = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: FlatButton(
+        child: Image.asset(
+          'images/ball$ballNumber.png',
+        ),
+        onPressed: () {
+          setState(() {
+            ballNumber = Random().nextInt(5) + 1;
+          });
+          print('I got clicked, the ball number is: $ballNumber');
+
+        },
+      ),
+    );
+  }
+}
+
+///dece页面内容
 class DicePage extends StatefulWidget {
   @override
   _DicePageState createState() => _DicePageState();
@@ -179,5 +205,3 @@ class _DicePageState extends State<DicePage> {
     });
   }
 }
-
-//========end dice======
